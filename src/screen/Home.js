@@ -10,12 +10,7 @@ function Home() {
     const user = useSelector(state => state.user);
     const history=useHistory();
 
-    const renderCard=()=>{
-        return <Card>
-            <h1>Hai</h1>
-        </Card>
-    }
-
+   
 
 
 
