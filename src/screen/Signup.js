@@ -84,7 +84,7 @@ function Signup() {
 
   const handleState=(seterror,values)=>{
      setError({...Error,skills:seterror})
-    setuser({ skills: [...values] });
+    setuser({...user, skills: [...values] });
   }
 
   const handleAddSkills = (e) => {
