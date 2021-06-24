@@ -5,7 +5,7 @@ import Home from './screen/Home';
 
 function App() {
   return (
-    <>
+    
       <BrowserRouter>
       <Switch>
         <Route exact path="/">
@@ -16,7 +16,6 @@ function App() {
         </Route>
       </Switch>
       </BrowserRouter>
-    </>
   );
 }
 

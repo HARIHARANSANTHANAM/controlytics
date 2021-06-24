@@ -6,11 +6,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import {Input} from '@material-ui/core';
-import { Container, CssBaseline, Button,FormHelperText } from '@material-ui/core';
+import { Container, CssBaseline, Button,FormHelperText ,Typography} from '@material-ui/core';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
-
+import logo from '../assets/signup_icon.jpg';
+import CreateAccount from '../Action/UserAction';
+import {useDispatch} from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +56,8 @@ function Signup() {
     fullname: "",
     skills: [""]
   })
-
+  
+  const dispatch = useDispatch()
 
   const [Error, setError] = useState({
     email:{
@@ -109,7 +112,7 @@ function Signup() {
     res.skills[i]={  helperText: "",
     error: false}
     setError(res)
-    setuser({ skills: [...values] });
+    setuser({ ...user,skills: [...values] });
   }
 
   const handleChange = (event) => {
@@ -203,6 +206,8 @@ function Signup() {
     
     if(handleValidationOnsubmit())
     {
+      console.log(user)
+        dispatch(CreateAccount(user));
         history.push('/Home')
     }
    
@@ -214,7 +219,13 @@ function Signup() {
         <CssBaseline />
         <div className={classes.paper}>
 
-
+        <div>
+            <img src={logo} alt="Poornatha" style={{ width: "50px" }} />
+          </div>
+          <Typography component="h1" variant="h5">
+            Signup
+          </Typography>
+         
           <form className={classes.form}>
             <FormControl className={clsx(classes.margin, classes.textField)}>
               <InputLabel shrink htmlFor="standard-adornment-password">Email</InputLabel>
